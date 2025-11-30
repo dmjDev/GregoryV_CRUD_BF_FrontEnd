@@ -12,7 +12,7 @@ function App() {
   },[])
   return (
     <main>
-      <h1>FrontEnd & BackEnd app</h1>
+      <h1>FrontEnd & BackEnd app CRUD</h1>
       <CreateUser />
       {
         users.map(user => (
