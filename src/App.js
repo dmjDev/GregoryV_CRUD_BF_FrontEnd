@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react"
+import UserBox from "./components/UsersBox"
+import CreateUser from "./components/CreateUser"
 
 function App() {
+  const [users, setUsers] = useState([])
+  useEffect(()=> {
+    //fetch('http://localhost:8000/api/users')
+    fetch('http://172.18.0.3:8000/api/users')   //UNA VEZ LOS TRES CONTENEDORES CONECTADOS DESDE NUESTRA RED DOCKER SE ASIGNA A NUESTRO FRONTEND LA IP DE NUESTRO BACKEND
+    .then(res => res.json())
+    .then(res => setUsers(res))
+  },[])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+      <h1>FrontEnd & BackEnd app</h1>
+      <CreateUser />
+      {
+        users.map(user => (
+          <UserBox name={user.name} password={user.password} id={user.id} key={user.id} />
+        ))
+      }
+    </main>
   );
 }
 
