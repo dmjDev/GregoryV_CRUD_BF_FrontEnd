@@ -12,8 +12,8 @@ export default function CreateUser(){
     function handleClickForm(e){
         e.preventDefault()
         fetch(
-            // 'http://localhost:8000/api/users'
-            'http://172.18.0.3:8000/api/users', ////UNA VEZ LOS TRES CONTENEDORES CONECTADOS DESDE NUESTRA RED DOCKER SE ASIGNA A NUESTRO FRONTEND LA IP DE NUESTRO BACKEND
+            'http://localhost:8000/api/users',
+            //'http://172.18.0.3:8000/api/users', ////UNA VEZ LOS TRES CONTENEDORES CONECTADOS DESDE NUESTRA RED DOCKER SE ASIGNA A NUESTRO FRONTEND LA IP DE NUESTRO BACKEND
             {
                 method: 'POST',
                 headers: {'Content-type': 'application/json'},

@@ -5,8 +5,8 @@ import CreateUser from "./components/CreateUser"
 function App() {
   const [users, setUsers] = useState([])
   useEffect(()=> {
-    //fetch('http://localhost:8000/api/users')
-    fetch('http://172.18.0.3:8000/api/users')   //UNA VEZ LOS TRES CONTENEDORES CONECTADOS DESDE NUESTRA RED DOCKER SE ASIGNA A NUESTRO FRONTEND LA IP DE NUESTRO BACKEND
+    fetch('http://localhost:8000/api/users')
+    //fetch('http://172.18.0.3:8000/api/users')   //UNA VEZ LOS TRES CONTENEDORES CONECTADOS DESDE NUESTRA RED DOCKER SE ASIGNA A NUESTRO FRONTEND LA IP DE NUESTRO BACKEND
     .then(res => res.json())
     .then(res => setUsers(res))
   },[])
