@@ -1,25 +1,25 @@
 import { useState } from "react"
 
 export default function CreateUser(){
-    const [ textName, setTextName ] = useState('')
-    const [ textPassword, setTextPassword ] = useState('')
+    const [ textName, setTextName ] = useState('')          //constante TEXTNAME que va a contener el valor de nombre de usuario de nuestro formulario incializado con un estado de string vacio
+    const [ textPassword, setTextPassword ] = useState('')  //constante TEXTPASSWORD que va a contener el valor de password de usuario de nuestro formulario incializado con un estado de string vacio
     function handleTextName(e){
-        setTextName(e.target.value)
+        setTextName(e.target.value)                         //asignamos el valor del campo a la variable TEXTNAME
     }
     function handleTextPassword(e){
-        setTextPassword(e.target.value)
+        setTextPassword(e.target.value)                     //asignamos el valor del campo a la variable TEXTPASSWORD
     }
     function handleClickForm(e){
-        e.preventDefault()
+        e.preventDefault()                          //evitamos que se envíe el formulario al hacer click en el submit
         fetch(
-            'http://localhost:8000/api/users',
-            //'http://172.18.0.3:8000/api/users', ////UNA VEZ LOS TRES CONTENEDORES CONECTADOS DESDE NUESTRA RED DOCKER SE ASIGNA A NUESTRO FRONTEND LA IP DE NUESTRO BACKEND
+            //'http://localhost:8000/api/users',      //LA IP DE NUESTRO BACKEND - origen de los recursos que van a llegar desde el BackEnd - desde un puerto BackEnd de nuestra máquina LOCAL
+            'http://172.18.0.3:8000/api/users',   //LA IP DE NUESTRO BACKEND - origen de los recursos que van a llegar desde el BackEnd - desde la network de nuestro contenedor BackEnd DOCKER
             {
                 method: 'POST',
                 headers: {'Content-type': 'application/json'},
                 body: JSON.stringify(
                     {
-                        name: textName,
+                        name: textName,             //el nombre de los parámetros name y password debe de coincidir con los del archivo de BackEnd crud.py en su método create_user
                         password: textPassword
                     }
                 )
